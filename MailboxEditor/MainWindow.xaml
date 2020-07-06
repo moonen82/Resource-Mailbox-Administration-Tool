@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
         <Label Margin="10" Grid.Column="1" Grid.Row="1" FontSize="14">Search: </Label>
         <TextBox Margin="10" Grid.Row="1" Grid.Column="2" FontSize="14" x:Name="searchText" MinWidth="100"/>
-        <Button x:Name="searchBtn" Grid.Column="3" Grid.Row="1" FontSize="14" MinWidth="75" MaxHeight="30" Margin="10">Search</Button>
+        <Button x:Name="searchBtn" Grid.Column="3" Grid.Row="1" FontSize="14" MinWidth="75" MaxHeight="30" Margin="10" Click="searchBtn_Click">Search</Button>
         <ListBox x:Name="mailboxList" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="10 15 10 15">
             <ListBox.ItemTemplate>
                 <DataTemplate>
