@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailboxEditor"
         mc:Ignorable="d"
-        Title="Resource Mailbox Search Editor by Michiel Moonen v1.01" Height="386" Width="478">
+        Title="Resource Mailbox Search Editor by Michiel Moonen v1.05" Height="400" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -51,6 +51,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="crudMailboxBtn" Grid.Column="4" Grid.Row="1" FontSize="14" MinWidth="75" MaxHeight="30" Margin="10">Create/Edit</Button>
+        <Button x:Name="crudMailboxBtn" Grid.Column="4" Grid.Row="1" FontSize="14" MinWidth="75" MaxHeight="30" Margin="10" Click="crudMailboxBtn_Click">Create/Edit</Button>
     </Grid>
 </Window>

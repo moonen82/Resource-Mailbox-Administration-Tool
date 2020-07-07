@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MailboxEditor"
         mc:Ignorable="d" FontSize="16"
-        Title="Mailboxes Editor by Michiel Moonen v0.7" Height="450" Width="800">
+        Title="Mailboxes Editor by Michiel Moonen v0.78" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -26,20 +27,23 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="0 10 0 10" FontSize="28">Mailbox Creator / Editor</TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">Resource Mailbox Name :</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">Mailbox Name :</TextBlock>
         <TextBox x:Name="mailboxNameText" Grid.Row="1" Grid.Column="2" MinWidth="200" MaxWidth="300" Margin="0 10 0 10"/>
+        <Button x:Name="returnMainFormBtn" Grid.Row="1" Grid.Column="3" MaxWidth="90" MaxHeight="25"  HorizontalAlignment="Center" Margin="0 10 0 10" Click="returnMainFormBtn_Click">SearchForm</Button>
         <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">Mailbox Alias :</TextBlock>
         <TextBox x:Name="mailboxAliasText" Grid.Row="2" Grid.Column="2" MinWidth="200" MaxWidth="300" Margin="0 10 0 10"/>
         <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">Mailbox Password :</TextBlock>
         <TextBox x:Name="mailboxPasswordText" Grid.Row="3" Grid.Column="2" MinWidth="200" MaxWidth="300" Margin="0 10 0 10"/>
-        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">User First Name:</TextBlock>
-        <TextBox x:Name="userFirstNameText" Grid.Row="4" Grid.Column="2" MinWidth="200" MaxWidth="300" Margin="0 10 0 10"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">User Last Name:</TextBlock>
-        <TextBox x:Name="userLastNameText" Grid.Row="5" Grid.Column="2" MinWidth="200" MaxWidth="300" Margin="0 10 0 10"/>
-        <TextBlock Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">User Mail Address:</TextBlock>
-        <TextBox x:Name="userMailAddressText" Grid.Row="6" Grid.Column="2" MinWidth="200" MaxWidth="300" Margin="0 10 0 10"/>
-        <Button x:Name="createMailboxBtn" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Right" MaxHeight="35" Margin="0 10 0 10">Create Mailbox</Button>
-        <Button x:Name="updateMailboxBtn" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Center" MaxHeight="35" Margin="0 10 0 10">Update Mailbox Property</Button>
-        <Button x:Name="deleteMailboxBtn" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Center" MaxHeight="35" Margin="0 10 0 10">Delete Property</Button>
+        <Button x:Name="createMailboxBtn" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" MaxHeight="35" Margin="0 10 0 10" Click="createMailboxBtn_Click">Create Mailbox</Button>
+        <TextBlock Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">User First Name:</TextBlock>
+        <TextBox x:Name="userFirstNameText" Grid.Row="5" Grid.Column="2" MinWidth="200" MaxWidth="300" Margin="0 10 0 10"/>
+        <TextBlock Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">User Last Name:</TextBlock>
+        <TextBox x:Name="userLastNameText" Grid.Row="6" Grid.Column="2" MinWidth="200" MaxWidth="300" Margin="0 10 0 10"/>
+        <TextBlock Grid.Row="7" Grid.Column="1" HorizontalAlignment="Right" Margin="0 10 5 10">User Mail Address:</TextBlock>
+        <TextBox x:Name="userMailAddressText" Grid.Row="7" Grid.Column="2" MinWidth="200" MaxWidth="300" Margin="0 10 0 10"/>
+        <Button x:Name="createUserBtn" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center" MaxHeight="35" Margin="0 10 0 10" Click="createUserBtn_Click">Create User</Button>
+        <Button x:Name="updateMailboxBtn" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Center" MaxHeight="35" Margin="0 10 0 10" Click="updateMailboxBtn_Click">Update Properties</Button>
+        <Button x:Name="deleteMailboxBtn" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Center" MaxHeight="35" Margin="10 10 10 10" Click="deleteMailboxBtn_Click">Delete Property</Button>
+        <Button x:Name="LinkBtn" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" MaxHeight="35" Margin="10 10 10 10" Click="LinkBtn_Click">Linking Form</Button>
     </Grid>
 </Window>

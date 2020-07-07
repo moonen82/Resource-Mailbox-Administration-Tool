@@ -28,7 +28,7 @@ namespace MailboxEditor
             InitializeComponent();
         }
 
-        private static string GetConnectionString(string connectionStringName = "Default")
+        public static string GetConnectionString(string connectionStringName = "Default")
         {
             string output = "";
 
@@ -57,6 +57,13 @@ namespace MailboxEditor
                 var searchMailboxResult = sql.ConvertSearchToBindingList(searchText.Text);
                 mailboxList.ItemsSource = searchMailboxResult;
             }
+        }
+
+        private void crudMailboxBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MailboxesCUD mailboxesCUD = new MailboxesCUD();
+
+            mailboxesCUD.Show();
         }
     }
 }

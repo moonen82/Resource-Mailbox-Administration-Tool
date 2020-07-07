@@ -1,0 +1,33 @@
+﻿<Window x:Class="MailboxEditor.LinkingForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailboxEditor"
+        mc:Ignorable="d" FontSize="14"
+        Title="Linking Formulier voor koppelen Mailbox en Users by Michiel Moonen ver. 0.6" Height="235" Width="565">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="28">Link / Unlink Users to Mailbox</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="10 10 10 10">Mailbox Name:</TextBlock>
+        <TextBox x:Name="mailboxUpdateText" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="10 10 10 10" MinWidth="200"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="10 10 10 10">User email:</TextBlock>
+        <TextBox x:Name="userUpdateText" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="10 10 10 10" MinWidth="200"/>
+        <Button x:Name="LinkMailboxUserBtn" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" Margin="10 10 10 10" MinWidth="90" Click="LinkMailboxUserBtn_Click">Link Mailbox / User</Button>
+        <Button x:Name="UnlinkMailboxUserBtn" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" Margin="10 10 10 10" MinWidth="90" Click="UnlinkMailboxUserBtn_Click">Unlink Mailbox / User</Button>
+        <Button x:Name="MainFormBtn" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" Margin="10 10 10 10" MinWidth="80" Click="MainFormBtn_Click">Close Form</Button>
+    </Grid>
+</Window>
