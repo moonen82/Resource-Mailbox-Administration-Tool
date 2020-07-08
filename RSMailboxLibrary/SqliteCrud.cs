@@ -22,8 +22,20 @@ namespace RSMailboxLibrary
         public List<FullMailboxModel> GetAllMailboxes()
         {
             string sql = "select m.Id, m.MailboxName, m.MailAlias, m.Password, mu.UserId, u.FirstName, u.LastName, u.MailAddress from Mailbox m " +
-                "inner join MailboxUser mu on mu.MailboxId = m.Id inner join User u on mu.UserId = u.Id;";
+                "inner join MailboxUser mu on mu.MailboxId = m.Id inner join User u on u.Id = mu.UserId;";
             return db.LoadData<FullMailboxModel, dynamic>(sql, new { }, _connectionString);
+        }
+
+        public List<MailboxModel> GetOnlyMailboxName()
+        {
+            string sql = "select MailboxName from Mailbox;";
+            return db.LoadData<MailboxModel, dynamic>(sql, new { }, _connectionString);
+        }
+
+        public List<UserModel> GetOnlyUserMailAddress()
+        {
+            string sql = "select MailAddress from User;";
+            return db.LoadData<UserModel, dynamic>(sql, new { }, _connectionString);
         }
 
         public List<FullMailboxModel> SearchAllMailboxes(string searchKey)
@@ -50,7 +62,7 @@ namespace RSMailboxLibrary
             var newBindingList = new BindingList<FullMailboxModel>(oldList);
             return newBindingList;
         }
-
+       
         public void CreateMailbox(MailboxModel mailbox)
         {
             string sql = "insert into Mailbox (MailboxName, MailAlias, Password) values (@MailboxName, @MailAlias, @Password);";
@@ -130,20 +142,20 @@ namespace RSMailboxLibrary
 
         public void DeleteMailbox(ResourceUser mailbox)
         {
-            string sql = "delete from MailboxUser where MailboxId = @Id;";
-            db.SaveData(sql, new { mailbox.Id }, _connectionString);
+            string sql = "delete from MailboxUser where MailboxId = @MailboxId;";
+            db.SaveData(sql, new { mailbox.MailboxId }, _connectionString);
 
-            sql = "delete from Mailbox where Id = @Id;";
-            db.SaveData(sql, new { mailbox.Id }, _connectionString);
+            sql = "delete from Mailbox where Id = @MailboxId;";
+            db.SaveData(sql, new { mailbox.MailboxId }, _connectionString);
         }
 
         public void DeleteUser(ResourceUser user)
         {
-            string sql = "delete from MailboxUser where UserId = @Id;";
-            db.SaveData(sql, new { user.Id }, _connectionString);
+            string sql = "delete from MailboxUser where UserId = @UserId;";
+            db.SaveData(sql, new { user.UserId }, _connectionString);
 
-            sql = "delete from User where Id = @Id;";
-            db.SaveData(sql, new { user.Id }, _connectionString);
+            sql = "delete from User where Id = @UserId;";
+            db.SaveData(sql, new { user.UserId }, _connectionString);
         }
 
         public void UpdateMailbox(MailboxModel mailbox)
@@ -156,6 +168,18 @@ namespace RSMailboxLibrary
         {
             string sql = "update User set FirstName = @Firstname, LastName = @LastName, MailAddress = @MailAddress where Id = @Id;";
             db.SaveData(sql, user, _connectionString);
+        }        
+
+        public int GetUserIdExtra(UserModel user)
+        {
+            string sql = "select Id from User where MailAddress = @MailAddress;";
+            int userId = 0;
+
+            if (!CheckUserMailAddressId(user))
+            {
+                userId = db.LoadData<IdLookupModel, dynamic>(sql, new { user.FirstName, user.LastName, user.MailAddress }, _connectionString).First().Id;
+            }
+            return userId;
         }
     }
 }

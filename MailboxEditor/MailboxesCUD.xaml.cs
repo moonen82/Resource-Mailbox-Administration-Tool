@@ -92,77 +92,88 @@ namespace MailboxEditor
             }
         }
 
-        private void deleteMailboxBtn_Click(object sender, RoutedEventArgs e)
+        private void UpdateDeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            SqliteCrud sql = new SqliteCrud(MainWindow.GetConnectionString());
-            MailboxModel mailbox = new MailboxModel();
-            UserModel user = new UserModel();
-            ResourceUser resourceUser = new ResourceUser();
-            
-            mailbox.MailboxName = mailboxNameText.Text.ToLower();
-            
-            user.FirstName = userFirstNameText.Text.ToLower();
-            user.LastName = userLastNameText.Text.ToLower();
-            user.MailAddress = userMailAddressText.Text.ToLower();
+            LinkingForm linking = new LinkingForm();
 
-            if (!string.IsNullOrEmpty(mailboxNameText.Text))
-            {
-                bool mailboxCheck = sql.CheckMailboxId(mailbox);
-                if (!mailboxCheck)
-                {
-                    resourceUser.MailboxId = sql.GetMailboxId(mailbox);
-                    sql.DeleteMailbox(resourceUser);
-                }
-                else
-                {
-                    MessageBox.Show("Error not found", "not found", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            
-
-            if (!string.IsNullOrEmpty(userFirstNameText.Text) || !string.IsNullOrEmpty(userLastNameText.Text) || !string.IsNullOrEmpty(userMailAddressText.Text))
-            {
-                bool userCheck = sql.CheckUserId(user);
-                if (!userCheck)
-                {
-                    resourceUser.UserId = sql.GetUserId(user);
-                    sql.DeleteUser(resourceUser);
-                }
-                else
-                {
-                    MessageBox.Show("Error not found", "not found", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }                                
+            linking.Show();
         }
 
-        private void updateMailboxBtn_Click(object sender, RoutedEventArgs e)
-        {
-            SqliteCrud sql = new SqliteCrud(MainWindow.GetConnectionString());
-            MailboxModel mailbox = new MailboxModel();
-            UserModel user = new UserModel();
-            ResourceUser resourceUser = new ResourceUser();
+        //private void deleteMailboxBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    SqliteCrud sql = new SqliteCrud(MainWindow.GetConnectionString());
+        //    MailboxModel mailbox = new MailboxModel();
+        //    UserModel user = new UserModel();
+        //    ResourceUser resourceUser = new ResourceUser();
 
-            mailbox.MailboxName = mailboxNameText.Text.ToLower();
-            mailbox.MailAlias = mailboxAliasText.Text.ToLower();
-            mailbox.Password = mailboxPasswordText.Text;
+        //    mailbox.MailboxName = mailboxNameText.Text.ToLower();
 
-            user.FirstName = userFirstNameText.Text.ToLower();
-            user.LastName = userLastNameText.Text.ToLower();
-            user.MailAddress = userMailAddressText.Text.ToLower();
+        //    user.FirstName = userFirstNameText.Text.ToLower();
+        //    user.LastName = userLastNameText.Text.ToLower();
+        //    user.MailAddress = userMailAddressText.Text.ToLower();
 
-            bool mailboxCheck = sql.CheckMailboxId(mailbox);
-            if (!mailboxCheck)
-            {
-                mailbox.Id = sql.GetMailboxId(mailbox);
-                sql.UpdateMailbox(mailbox);
-            }
+        //    if (!string.IsNullOrEmpty(mailboxNameText.Text))
+        //    {
+        //        bool mailboxCheck = sql.CheckMailboxId(mailbox);
+        //        if (!mailboxCheck)
+        //        {
+        //            resourceUser.MailboxId = sql.GetMailboxId(mailbox);
+        //            sql.DeleteMailbox(resourceUser);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Error not found", "not found", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    }
 
-            bool userCheck = sql.CheckUserId(user);
-            if (!userCheck)
-            {
-                user.Id = sql.GetUserId(user);
-                sql.UpdateUser(user);
-            }
-        }
+
+        //    if (!string.IsNullOrEmpty(userFirstNameText.Text) || !string.IsNullOrEmpty(userLastNameText.Text) || !string.IsNullOrEmpty(userMailAddressText.Text))
+        //    {
+        //        bool userCheck = sql.CheckUserId(user);
+        //        if (!userCheck)
+        //        {
+        //            resourceUser.UserId = sql.GetUserId(user);
+        //            sql.DeleteUser(resourceUser);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Error not found", "not found", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    }                                
+        //}
+
+        //private void updateMailboxBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    SqliteCrud sql = new SqliteCrud(MainWindow.GetConnectionString());
+        //    MailboxModel mailbox = new MailboxModel();
+        //    UserModel user = new UserModel();
+        //    ResourceUser resourceUser = new ResourceUser();
+
+        //    mailbox.MailboxName = mailboxNameText.Text.ToLower();
+        //    mailbox.MailAlias = mailboxAliasText.Text.ToLower();
+        //    mailbox.Password = mailboxPasswordText.Text;
+
+        //    user.FirstName = userFirstNameText.Text.ToLower();
+        //    user.LastName = userLastNameText.Text.ToLower();
+        //    user.MailAddress = userMailAddressText.Text.ToLower();
+
+        //    string newUpdateValue = "";
+        //    newUpdateValue = updateText.Text.ToLower();
+
+        //    bool mailboxCheck = sql.CheckMailboxId(mailbox);
+        //    if (!mailboxCheck && !string.IsNullOrEmpty(newUpdateValue))
+        //    {
+        //        mailbox.Id = sql.GetMailboxId(mailbox);
+        //        sql.UpdateMailbox(mailbox);
+        //    }
+
+        //    bool userCheck = sql.CheckUserId(user);
+        //    if (!userCheck && !string.IsNullOrEmpty(newUpdateValue))
+        //    {
+        //        user.FirstName = newUpdateValue;
+        //        user.Id = sql.GetUserId(user);
+        //        sql.UpdateUser(user);
+        //    }
+        //}
     }
 }
